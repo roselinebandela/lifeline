@@ -1,0 +1,47 @@
+/* LIFELINE design tokens: a satellite atlas.
+   Dark imagery, white survey linework, two type families.
+   Ochre always means flood risk or caution. Coral always means an active alert.
+   Neither is ever used without a word next to it. */
+:root {
+  --ink: #0d1720;          /* page and map ground */
+  --ink-2: #13212c;        /* raised dark surface */
+  --ink-3: #1b2d3a;        /* hover-free selected state */
+  --line: rgba(240, 237, 228, 0.16);
+  --line-strong: rgba(240, 237, 228, 0.42);
+  --ivory: #f0ede4;
+  --mute: #a3b2bb;
+  --mute-2: #73858f;
+  --teal: #73b7ae;         /* interactive, links, "operating" */
+  --teal-ink: #1f6b67;     /* teal on paper */
+  --ochre: #e7b94f;        /* flood risk, caution */
+  --ochre-ink: #7d5a0d;
+  --coral: #e0826f;        /* active official alert */
+  --coral-ink: #9a3f31;
+  --cream: #fbf6eb;        /* printable plan sheet */
+  --paper: #f2e7d1;
+  --text-paper: #1f2c31;
+
+  --font-display: "Mona Sans Variable", "Arial", sans-serif;
+  --font-mono: "Martian Mono Variable", ui-monospace, "Consolas", monospace;
+
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 80px;
+
+  --bar: 60px;
+  --t-routine: 160ms;
+  --t-panel: 260ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-routine: 0ms;
+    --t-panel: 0ms;
+  }
+}

@@ -1,0 +1,80 @@
+.mapscreen {
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr);
+  height: calc(100vh - var(--bar));
+}
+
+.mapside {
+  overflow-y: auto;
+  border-right: 1px solid var(--line);
+  padding: var(--s5) var(--s5) var(--s7);
+  display: grid;
+  align-content: start;
+  gap: var(--s4);
+}
+
+.mapside-head { display: grid; gap: var(--s3); }
+
+.mapsearch {
+  min-height: 50px;
+  padding: 0 var(--s4);
+  border: 1.5px solid var(--ivory);
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--ivory);
+  font-size: 16px;
+}
+
+.filters { display: flex; flex-wrap: wrap; gap: 6px; border: 0; padding: 0; margin: 0; }
+.chip-small { min-height: 38px; padding: 0 var(--s3); font-size: 13.5px; }
+.chip-count { font-family: var(--font-mono); font-size: 11px; color: var(--mute); }
+
+.parish-select { display: grid; gap: 4px; }
+.parish-select select {
+  min-height: 44px;
+  padding: 0 var(--s3);
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+.result-count { font-family: var(--font-mono); font-size: 12px; color: var(--mute); }
+
+.mapside-sel { display: grid; gap: var(--s2); padding: var(--s3); border: 1px solid var(--ivory); }
+.mapside-sel .flist { border-top: 0; }
+.mapside-sel .frow { border-bottom: 0; }
+
+.maplist .frow-name { font-size: 15.5px; }
+.more { justify-self: start; }
+
+.mapmain { position: relative; min-width: 0; }
+.mapmain .caremap { height: 100%; }
+
+.maplegend {
+  position: absolute;
+  left: var(--s4);
+  bottom: var(--s5);
+  z-index: 800;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  max-width: calc(100% - 32px);
+  padding: var(--s2) var(--s3);
+  background: rgba(13, 23, 32, 0.88);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.maplegend span { display: inline-flex; align-items: center; gap: 6px; }
+.swatch { display: inline-block; width: 11px; height: 11px; border: 1.5px solid var(--ink); outline: 1px solid var(--line-strong); }
+.swatch-flood { background: var(--ochre); }
+
+@media (max-width: 960px) {
+  .mapscreen { grid-template-columns: 1fr; grid-template-rows: 52vh auto; height: auto; }
+  .mapmain { order: -1; height: 52vh; }
+  .mapside { border-right: 0; overflow: visible; padding: var(--s4); }
+  .maplegend { bottom: var(--s2); left: var(--s2); }
+}

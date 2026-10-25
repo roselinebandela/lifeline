@@ -1,0 +1,35 @@
+.now-src { display: inline-flex; flex-wrap: wrap; gap: 4px; align-items: baseline; }
+.now-src .link-btn { font-size: inherit; }
+
+.calm { display: flex; gap: var(--s2); align-items: center; font-weight: 650; color: var(--teal); padding: var(--s3) 0; }
+
+.alert-list { list-style: none; display: grid; gap: var(--s3); }
+/* Alert strip: the emergency-banner motif from the flood poster reference. */
+.alert-strip {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: var(--s3);
+  padding: var(--s4);
+  background: var(--paper);
+  color: var(--text-paper);
+  border-left: 6px solid var(--coral);
+}
+.alert-strip > svg { color: var(--coral-ink); }
+.alert-strip .kicker { color: #4b5a5f; }
+.alert-event { font-weight: 850; font-variation-settings: "wdth" 112; font-size: 20px; }
+.alert-area { font-size: 13.5px; }
+.alert-instr { white-space: pre-line; font-size: 14px; }
+.alert-strip summary { cursor: pointer; font-weight: 700; min-height: 36px; display: flex; align-items: center; }
+
+.now-cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s7); align-items: start; }
+.frow-plain { grid-template-columns: minmax(0, 1fr); }
+
+.links { list-style: none; display: grid; gap: var(--s3); }
+.links a { font-weight: 700; }
+
+.sat { background: var(--ink-2); max-width: 900px; }
+.sat img { width: 100%; height: auto; }
+
+@media (max-width: 960px) {
+  .now-cols { grid-template-columns: 1fr; gap: var(--s6); }
+}

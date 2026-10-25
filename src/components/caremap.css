@@ -1,0 +1,78 @@
+.caremap {
+  position: relative;
+  background: var(--ink);
+  min-height: 320px;
+}
+
+.caremap-map {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+}
+
+/* Grade the imagery toward the atlas palette: cooler, darker, less saturated. */
+.caremap .leaflet-tile-pane {
+  filter: saturate(0.55) brightness(0.72) contrast(1.12) hue-rotate(-8deg);
+}
+
+/* Survey grid over the imagery, as on the atlas poster. */
+.caremap-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 450;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(240, 237, 228, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 237, 228, 0.09) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.caremap .leaflet-container {
+  font-family: var(--font-display);
+  background: var(--ink);
+}
+
+.caremap .leaflet-control-attribution {
+  background: rgba(13, 23, 32, 0.85);
+  color: var(--mute);
+  font-size: 10px;
+}
+.caremap .leaflet-control-attribution a { color: var(--teal); }
+
+.caremap .leaflet-bar a {
+  background: var(--ink-2);
+  color: var(--ivory);
+  border-color: var(--line);
+  border-radius: 0 !important;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+}
+.caremap .leaflet-bar { border: 1px solid var(--line-strong); border-radius: 0; }
+
+.caremap .leaflet-tooltip {
+  background: var(--ink);
+  color: var(--ivory);
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+.caremap .leaflet-tooltip-top::before { border-top-color: var(--line-strong); }
+
+.ring-label,
+.annot-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ivory);
+  text-shadow: 0 0 3px var(--ink), 0 0 3px var(--ink);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.annot-label { text-align: left; font-weight: 700; }
+.annot-l { text-align: right; }
+.annot-t,
+.annot-b { text-align: center; }

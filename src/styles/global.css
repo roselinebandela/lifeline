@@ -1,0 +1,107 @@
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.5;
+  font-variation-settings: "wdth" 100;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, p, ul, ol, dl, figure, fieldset { margin: 0; }
+ul, ol { padding: 0; }
+img, svg { display: block; max-width: 100%; }
+button, input, select { font: inherit; color: inherit; }
+
+a { color: var(--teal); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+
+:focus-visible { outline: 3px solid var(--ochre); outline-offset: 2px; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute; left: var(--s4); top: -80px; z-index: 2000;
+  background: var(--ochre); color: var(--ink); padding: var(--s2) var(--s4); font-weight: 700;
+}
+.skip-link:focus { top: var(--s4); }
+
+/* ---------- Type ---------- */
+/* Heavy wide capitals, paired with light lowercase, as on the atlas poster. */
+.heavy {
+  font-weight: 880;
+  font-variation-settings: "wdth" 125;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+}
+.light {
+  font-weight: 300;
+  font-variation-settings: "wdth" 100;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+}
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-variation-settings: "wdth" 87.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.mono { font-family: var(--font-mono); font-size: 0.84em; font-variation-settings: "wdth" 87.5; }
+.muted { color: var(--mute); }
+.small { font-size: 14px; }
+
+/* ---------- Controls ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s2);
+  min-height: 48px; padding: 0 var(--s5);
+  border: 1.5px solid var(--ivory); border-radius: 0; background: transparent; color: var(--ivory);
+  font-weight: 760; font-variation-settings: "wdth" 115; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: background-color var(--t-routine) var(--ease), color var(--t-routine) var(--ease);
+}
+.btn-solid { background: var(--ivory); color: var(--ink); }
+.btn-small { min-height: 38px; padding: 0 var(--s3); font-size: 12px; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.link-btn {
+  background: none; border: 0; padding: 0; color: var(--teal); cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px; font: inherit;
+}
+
+.chip {
+  display: inline-flex; align-items: center; gap: var(--s2);
+  min-height: 44px; padding: 0 var(--s4);
+  border: 1px solid var(--line-strong); cursor: pointer; user-select: none; font-weight: 600; font-size: 15px;
+}
+.chip input { width: 18px; height: 18px; accent-color: var(--teal); margin: 0; }
+.chip:has(input:checked) { border-color: var(--ivory); background: var(--ink-3); }
+
+/* ---------- Badges: word plus glyph, never color alone ---------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+  padding: 3px 7px; border: 1px solid currentColor;
+}
+.badge svg { width: 13px; height: 13px; flex: none; }
+.badge-flood { color: var(--ochre); }
+.badge-alert { color: var(--coral); }
+.badge-ok { color: var(--teal); }
+.badge-quiet { color: var(--mute); }
+
+.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+.screen-enter { animation: screen-in var(--t-panel) var(--ease); }
+@keyframes screen-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .screen-enter { animation: none; } }

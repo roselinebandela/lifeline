@@ -1,0 +1,25 @@
+.measure { max-width: 70ch; }
+
+.srctable { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.srctable th,
+.srctable td { text-align: left; padding: var(--s3) var(--s3) var(--s3) 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.srctable thead th { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); font-weight: 500; }
+
+.srclist { list-style: none; display: grid; }
+.srclist li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s3); padding: var(--s3) 0; border-bottom: 1px solid var(--line); }
+
+.limits { padding-left: 1.2em; display: grid; gap: var(--s2); max-width: 75ch; }
+
+.disclaimer {
+  max-width: 70ch;
+  border-top: 2px solid var(--ivory);
+  padding-top: var(--s4);
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .srctable thead { display: none; }
+  .srctable tr { display: grid; grid-template-columns: 1fr 1fr; padding: var(--s3) 0; border-bottom: 1px solid var(--line); }
+  .srctable th, .srctable td { border: 0; padding: 2px var(--s2) 2px 0; }
+  .srctable th, .srctable td:nth-child(2) { grid-column: 1 / -1; }
+}

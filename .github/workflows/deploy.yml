@@ -1,0 +1,51 @@
+name: Build data and deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Every Monday 09:00 UTC: refresh provider records from CMS, HRSA and NPPES.
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      # Refresh real provider data. If a federal source is down, keep the
+      # committed snapshot instead of failing the deploy.
+      - name: Refresh provider data
+        if: github.event_name != 'push'
+        continue-on-error: true
+        timeout-minutes: 40
+        run: npm run data:facilities
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
