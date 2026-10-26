@@ -38,6 +38,25 @@ npm run data:facilities   # refresh provider data from federal sources (about 10
 
 No accounts, API keys or backend. Provider data is a static file (`public/data/facilities.json`); live data is requested from the agencies in the browser.
 
+## Live app
+
+**https://roselinebandela.github.io/lifeline/**
+
+LIFELINE is an installable web app. On Android or a computer, open it in Chrome or Edge and choose **Install** (or use the button on the home screen). On iPhone, open it in Safari, tap **Share**, then **Add to Home Screen**. Once installed it opens like any other app, and the provider list and a saved plan still work without a connection.
+
+## Built with
+
+| Part | Tools |
+| --- | --- |
+| App | React 19, TypeScript, Vite |
+| Maps | Leaflet on USGS The National Map imagery |
+| Design | Hand-written CSS, Mona Sans and Martian Mono, custom SVG icons |
+| Data pipeline | Node.js scripts over the NPI Registry, CMS, HRSA, the Census geocoder and FEMA's flood layer |
+| Live data | National Weather Service, National Hurricane Center, FEMA, USGS, NASA GIBS |
+| Tests | Vitest |
+| Hosting | GitHub Pages, built and refreshed weekly by GitHub Actions |
+| Installable app | Web app manifest and a service worker |
+
 ## Screens
 
 - **Home**: address search, or use current location.
