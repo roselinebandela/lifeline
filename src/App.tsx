@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Icon, type IconName } from "./components/Icons";
+import { OfflineNotice } from "./components/InstallApp";
 import { Home } from "./screens/Home";
 import { PlanScreen } from "./screens/Plan";
 import { MapScreen } from "./screens/MapScreen";
@@ -46,6 +47,7 @@ export default function App() {
         </nav>
       </header>
 
+      <OfflineNotice />
       <main id="main" ref={mainRef} tabIndex={-1} className="main">
         <div className="screen-enter" key={route}>
           {route === "home" && <Home {...props} />}

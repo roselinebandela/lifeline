@@ -157,3 +157,19 @@
   .bar, .tabbar, .footer, .no-print { display: none !important; }
   body { background: #fff; color: #000; }
 }
+
+/* Offline notice and install block */
+.offline {
+  position: sticky;
+  top: var(--bar);
+  z-index: 999;
+  margin: 0;
+  padding: var(--s2) var(--s6);
+  background: var(--ochre);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+.install { display: grid; gap: var(--s2); justify-items: start; max-width: 60ch; }
+.home-install { display: grid; gap: var(--s3); padding-top: var(--s4); border-top: 1px solid var(--line); }
+@media (max-width: 760px) { .offline { top: 54px; padding: var(--s2) var(--s4); } }

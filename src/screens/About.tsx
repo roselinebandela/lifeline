@@ -1,5 +1,6 @@
 import type { ScreenProps } from "../App";
 import { TYPES, TYPE_PLURAL } from "../data/facilities";
+import { InstallApp } from "../components/InstallApp";
 import { BACKUP_RANGE_KM, BACKUP_SEPARATION_KM } from "../lib/plan";
 import "./about.css";
 
@@ -11,6 +12,16 @@ const LIVE = [
   { what: "Satellite imagery", who: "NASA GIBS", href: "https://www.earthdata.nasa.gov/engage/open-data-services-software/earthdata-developer-portal/gibs-api" },
   { what: "Map imagery", who: "USGS The National Map (public domain)", href: "https://www.usgs.gov/programs/national-geospatial-program/national-map" },
   { what: "Address search", who: "OpenStreetMap Nominatim", href: "https://nominatim.org/" },
+];
+
+const BUILT_WITH = [
+  { what: "App", tools: "React 19, TypeScript, Vite" },
+  { what: "Maps", tools: "Leaflet on USGS The National Map imagery" },
+  { what: "Design", tools: "Hand-written CSS, Mona Sans and Martian Mono typefaces, custom SVG icons" },
+  { what: "Data pipeline", tools: "Node.js scripts: NPI Registry, CMS, HRSA, Census geocoder, FEMA flood layer" },
+  { what: "Testing", tools: "Vitest" },
+  { what: "Hosting", tools: "GitHub Pages, deployed and refreshed weekly by GitHub Actions" },
+  { what: "Installable app", tools: "Web app manifest and a service worker for offline use" },
 ];
 
 export function AboutScreen({ facilities }: ScreenProps) {
@@ -87,6 +98,23 @@ export function AboutScreen({ facilities }: ScreenProps) {
           look up alerts and flood zones. Nothing is saved unless you turn on "Save this plan on this device", which keeps your location, the types of care you chose and
           your chosen providers in this browser only. LIFELINE never asks about diagnoses or medications.
         </p>
+      </section>
+
+      <section className="section">
+        <div className="section-head"><h2 className="section-title">Built with</h2></div>
+        <ul className="srclist">
+          {BUILT_WITH.map((s) => (
+            <li key={s.what}><span>{s.what}</span><span className="muted">{s.tools}</span></li>
+          ))}
+        </ul>
+        <p className="muted small">
+          Source code: <a href="https://github.com/roselinebandela/lifeline">github.com/roselinebandela/lifeline</a>
+        </p>
+      </section>
+
+      <section className="section">
+        <div className="section-head"><h2 className="section-title">Install the app</h2></div>
+        <InstallApp />
       </section>
 
       <p className="disclaimer">

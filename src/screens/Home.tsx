@@ -1,4 +1,5 @@
 import type { ScreenProps } from "../App";
+import { InstallApp } from "../components/InstallApp";
 import { LocationSearch } from "../components/LocationSearch";
 import { TYPES, TYPE_PLURAL } from "../data/facilities";
 import "./home.css";
@@ -96,6 +97,10 @@ export function Home({ go, facilities, planApi }: ScreenProps) {
           pharmacies. Each one is checked against FEMA's flood maps.{d ? ` Updated ${d.generated}.` : ""} Live alerts, forecasts, river levels and open shelters
           load from NWS, NHC, USGS and FEMA each time you open the app.
         </p>
+        <div className="home-install">
+          <p className="kicker">Keep it on your phone</p>
+          <InstallApp />
+        </div>
       </section>
     </div>
   );
