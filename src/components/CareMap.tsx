@@ -58,6 +58,9 @@ interface Props {
   label: string;
 }
 
+/** Leaflet inserts tooltip strings as HTML, so text from outside sources is escaped first. */
+const escapeHtml = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+
 const LOUISIANA: L.LatLngBoundsExpression = [[28.9, -94.05], [33.02, -88.8]];
 
 export function CareMap({ facilities, home, rings = [], annotations = [], selectedId, onSelect, shelters = [], fitKey, className, label }: Props) {
@@ -111,7 +114,7 @@ export function CareMap({ facilities, home, rings = [], annotations = [], select
         fillColor: wet ? "#e7b94f" : "#f0ede4",
         fillOpacity: 1,
       });
-      mk.bindTooltip(`${f.name}${wet ? ` (flood zone ${f.flood!.zone})` : ""}`, { direction: "top", offset: [0, -6] });
+      mk.bindTooltip(`${escapeHtml(f.name)}${wet ? ` (flood zone ${escapeHtml(f.flood!.zone)})` : ""}`, { direction: "top", offset: [0, -6] });
       mk.on("click", () => selectRef.current?.(f.id));
       g.addLayer(mk);
       markers.push([mk, f.id === selectedId]);
@@ -204,7 +207,7 @@ export function CareMap({ facilities, home, rings = [], annotations = [], select
     m.on("zoomend moveend resize", place);
     for (const s of shelters) {
       L.circleMarker([s.lat, s.lon], { radius: 6, color: "#e0826f", weight: 2.5, fillColor: "#0d1720", fillOpacity: 1 })
-        .bindTooltip(`Open shelter: ${s.name}`, { direction: "top" })
+        .bindTooltip(`Open shelter: ${escapeHtml(s.name)}`, { direction: "top" })
         .addTo(g);
     }
     return () => {
